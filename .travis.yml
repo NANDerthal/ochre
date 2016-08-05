@@ -28,8 +28,8 @@ addons:
         - libglew-dev
         - libsoil-dev
         - libglm-dev
-        - python3-pip
         - cython3
+#        - python3-pip
 
 # OSX
 before_install:
@@ -42,8 +42,8 @@ before_install:
 #     TODO: install SOIL from source
 
 # all
-install: 
-    - pip3 install -r requirements.txt
+install:
+#    - pip3 install -r requirements.txt
 
 # ===== run tests =====
 env:
