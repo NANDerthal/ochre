@@ -1,11 +1,18 @@
 language: python
 python:
+    - "2.6"
+    - "2.7"
     - "3.2"
     - "3.3"
     - "3.4"
     - "3.5"
+    - "3.5-dev"
+    - "3.6-dev"
+    - pypy
+    - pypy3
 
-# ===== operating systems =====
+
+# ===== testing systems =====
 os:
     - linux
 
@@ -14,6 +21,12 @@ os:
 #   - clang
 
 matrix:
+    allow_failures:
+        - python: pypy
+        - python: pypy3
+        - python: 3.5-dev
+        - python: 3.6-dev
+        - os: osx
     include:
         - os: osx
           language: generic
@@ -54,13 +67,18 @@ addons:
 #        - python3-pip
 
 # ===== run tests =====
-env:
-    - TEST_SUITE=core
-    - TEST_SUITE=graphics
-    - TEST_SUITE=gui
-    - TEST_SUITE=input
-    - TEST_SUITE=physics
-    - TEST_SUITE=prototypes
-    - TEST_SUITE=sound
-script: "make test-$TEST_SUITE"
+
+# Run tests individually
+#env:
+#    - TEST_SUITE=core
+#    - TEST_SUITE=graphics
+#    - TEST_SUITE=gui
+#    - TEST_SUITE=input
+#    - TEST_SUITE=physics
+#    - TEST_SUITE=prototypes
+#    - TEST_SUITE=sound
+#script: "make test-$TEST_SUITE"
+
+# Run all tests at once
+script: "make test-all"
 
