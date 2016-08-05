@@ -32,29 +32,28 @@ test-sound:
 # linux
 
 before_install_linux:
-    sudo apt-add-repository -y ppa:cython-dev/master-ppa
-    sudo apt-add-repository -y ppa:zoogie/sdl2-snapshots
-    sudo apt-get update
-    export PATH=~/usr/bin:$PATH
-    
+	sudo apt-add-repository -y ppa:cython-dev/master-ppa
+	sudo apt-add-repository -y ppa:zoogie/sdl2-snapshots
+	sudo apt-get update
+	export PATH=~/usr/bin:$PATH
 
 install_linux:
-    sudo apt-get --force-yes -y install libsdl2-dev
-    sudo apt-get --force-yes -y install libsdl2-ttf-dev
-    sudo apt-get --force-yes -y install cython3
+	sudo apt-get --force-yes -y install libsdl2-dev
+	sudo apt-get --force-yes -y install libsdl2-ttf-dev
+	sudo apt-get --force-yes -y install cython3
 
 # osx
 
 before_install_osx:
-    brew update
-    brew install sdl2
-    brew install sdl2_ttf
-    brew install glew
-    brew install glm
-    # TODO: install SOIL
+	brew update
+	brew install sdl2
+	brew install sdl2_ttf
+	brew install glew
+	brew install glm
+#	TODO: install SOIL
 
 install_osx:
-    brew install python3
-    virtualenv venv -p python3
-    source venv/bin/activate
+	brew install python3
+	virtualenv venv -p python3
+	source venv/bin/activate
 
