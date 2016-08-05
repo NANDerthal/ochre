@@ -34,6 +34,8 @@ addons:
 # OSX
 before_install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get update   ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo add-apt-repository ppa:zoogie/sdl2-snapshots; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo add-apt-repository ppa:cython-dev/master-ppa; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update             ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sdl2       ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sdl2_ttf   ; fi
