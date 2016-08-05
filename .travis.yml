@@ -13,7 +13,6 @@ python:
 
 
 # ===== testing systems =====
-sudo: required
 
 os:
     - linux
@@ -36,13 +35,13 @@ matrix:
 # ===== install dependencies =====
 
 before_install:
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make before_install_linux ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make before_install_osx     ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh .before_install_linux.sh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sh .before_install_osx.sh     ; fi
 
 # all
 install:
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make install_linux        ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make install_osx            ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh .install_linux.sh        ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sh .install_osx.sh            ; fi
 #    - pip3 install -r requirements.txt
 
 # ubuntu
