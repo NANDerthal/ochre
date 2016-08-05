@@ -22,8 +22,6 @@ addons:
     apt:
         sources:
         - ubuntu-toolchain-r-test
-        - sourceline: 'ppa:zoogie/sdl2-snapshots'
-        - sourceline: 'ppa:cython-dev/master-ppa'
         packages:
         - libsdl2-dev
         - libsdl2-ttf-dev
@@ -34,6 +32,8 @@ addons:
 #        - python3-pip
 
 before_install:
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-add-repository -y ppa:cython-dev/master-ppa   ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-add-repository -y ppa:zoogie/sdl2-snapshots   ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get update   ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH=~/usr/bin:$PATH; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update             ; fi
