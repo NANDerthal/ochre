@@ -35,4 +35,5 @@
 Build/
 img/
 build/
+*__pycache__*
 
