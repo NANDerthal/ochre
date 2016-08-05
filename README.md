@@ -1,5 +1,7 @@
 # ochre
 
+![Build Status](https://travis-ci.org/NANDerthal/ochre.svg?branch=master)](https://travis-ci.org/NANDerthal/ochre)
+
 **ochre** is a 2D game that uses using OpenGL and SDL2 implemented in C++. It is being developed and maintained by NANDerthal Games.
 
 ## Documentation
