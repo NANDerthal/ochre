@@ -13,6 +13,8 @@ python:
 
 
 # ===== testing systems =====
+sudo: required
+
 os:
     - linux
 
