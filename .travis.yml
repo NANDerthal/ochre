@@ -8,12 +8,15 @@ python:
 # ===== operating systems =====
 os:
     - linux
-    - osx
 
 #compiler:
 #   - g++
 #   - clang
 
+matrix:
+    include:
+        - os: osx
+          language: generic
 
 # ===== install dependencies =====
 
@@ -22,18 +25,21 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-add-repository -y ppa:zoogie/sdl2-snapshots   ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update                                         ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH=~/usr/bin:$PATH                            ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update             ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sdl2       ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sdl2_ttf   ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install glew       ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install glm        ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update                   ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sdl2             ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install sdl2_ttf         ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install glew             ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install glm              ; fi
 #     TODO: install SOIL from source for osx
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python3          ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then virtualenv venv -p python3    ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then source venv/bin/activate      ; fi
 
 # all
 install:
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -y install libsdl2-dev        ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -y install libsdl2-ttf-dev    ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -y install cython3            ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get --force-yes -y install libsdl2-dev        ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get --force-yes -y install libsdl2-ttf-dev    ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get --force-yes -y install cython3            ; fi
 #    - pip3 install -r requirements.txt
 
 # ubuntu
