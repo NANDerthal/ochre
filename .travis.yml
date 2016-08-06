@@ -59,17 +59,11 @@ addons:
 
 # ===== run tests =====
 
-# Run tests individually
-#env:
-#    - TEST_SUITE=core
-#    - TEST_SUITE=graphics
-#    - TEST_SUITE=gui
-#    - TEST_SUITE=input
-#    - TEST_SUITE=physics
-#    - TEST_SUITE=prototypes
-#    - TEST_SUITE=sound
-#script: "make test-$TEST_SUITE"
-
 # Run all tests at once
-script: "make test-all"
+script:
+    coverage run tests/allTests.py
+
+# ===== post-testing =====
+after_success:
+    coveralls
 
