@@ -34,6 +34,9 @@
 # Directories
 Build/
 img/
+
+# Python/cython project-specific
 build/
 *__pycache__*
+ochre.cpp
 
