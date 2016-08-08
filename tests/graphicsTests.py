@@ -3,9 +3,9 @@
 import unittest
 import numpy as np
 
-'''
 from ochre import graphics
 
+'''
 class TestSprite(unittest.TestCase):
 
     def test_loadSprite(self):
@@ -13,6 +13,7 @@ class TestSprite(unittest.TestCase):
 
     def test_loadSprite(self):
         self.assertEqual(true, true)
+'''
 
 class TestCamera(unittest.TestCase):
 
@@ -20,89 +21,108 @@ class TestCamera(unittest.TestCase):
         self.camera = graphics.Camera()
 
     def resetCamera(self):
-        self.camera.move(0, 0, 0)
-        self.camera.lookAt(0, 0, 1)
-        self.camera.setUp(0, 1, 0)
+        self.camera.setPosition(0, 0, 0)
+        self.camera.setLookAt(0, 0, 1)
+        self.camera.setOrientation(0, 1, 0)
 
     def test_constructor(self):
         self.assert(self.camera)
         self.assertEqual(self.camera.getPosition(), [0, 0, 0])
         self.assertEqual(self.camera.getLookAt(), [0, 0, 1])
-        self.assertEqual(self.camera.getUp(), [0, 1, 0])
+        self.assertEqual(self.camera.getOrientation(), [0, 1, 0])
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    # camera move
+    # camera set position
 
-    def test_moveNone(self):
-        self.camera.move()
+    def test_setPositionNone(self):
+        self.resetCamera()
+        self.camera.setPosition()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_moveX(self):
-        self.camera.move()
+    def test_setPositionX(self):
+        self.resetCamera()
+        self.camera.setPosition()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_moveY(self):
-        self.camera.move()
+    def test_setPositionY(self):
+        self.resetCamera()
+        self.camera.setPosition()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_moveZ(self):
-        self.camera.move()
+    def test_setPositionZ(self):
+        self.resetCamera()
+        self.camera.setPosition()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_moveAll(self):
-        self.camera.move()
+    def test_setPositionAll(self):
+        self.resetCamera()
+        self.camera.setPosition()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    # camera lookAt
+    # camera setLookAt
 
-    def test_lookAtNone(self):
-        self.camera.lookAt()
+    def test_setLookAtNone(self):
+        self.resetCamera()
+        self.camera.setLookAt()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_lookAtX(self):
-        self.camera.lookAt()
+    def test_setLookAtX(self):
+        self.resetCamera()
+        self.camera.setLookAt()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_lookAtY(self):
-        self.camera.lookAt()
+    def test_setLookAtY(self):
+        self.resetCamera()
+        self.camera.setLookAt()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_lookAtZ(self):
-        self.camera.lookAt()
+    def test_setLookAtZ(self):
+        self.resetCamera()
+        self.camera.setLookAt()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_lookAtAll(self):
-        self.camera.lookAt()
+    def test_setLookAtAll(self):
+        self.resetCamera()
+        self.camera.setLookAt()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    # camera strafe
+    # camera set orientation
 
-    def test_strafeNone(self):
-        resetCamera()
-        self.camera.strafe(0, 0, 0)
-        self.assertEqual(self.camera.getMatrix(), np.identity(4)
-
-    def test_strafeX(self):
-        resetCamera()
-        self.camera.strafe(1, 0, 0)
-        goal = np.identity(4)
-        self.assertEqual(self.camera.getMatrix(), goal)
-
-    def test_strafeY(self):
-        resetCamera()
-        self.camera.strafe(0, 1, 0)
-        self.assertEqual(self.camera.getMatrix(), np.matrix(4))
-
-    def test_strafeZ(self):
-        resetCamera()
-        self.camera.strafe(0, 0, 1)
-        self.assertEqual(self.camera.getMatrix(), np.matrix(4))
-
-    def test_strafeAll(self):
-        resetCamera()
-        self.camera.strafe(1, 1, 1)
+    def test_setOrientationNone(self):
+        self.resetCamera()
+        self.camera.setOrientation()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
+    def test_setOrientationX(self):
+        self.resetCamera()
+        self.camera.setOrientation()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_setOrientationY(self):
+        self.resetCamera()
+        self.camera.setOrientation()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_setOrientationZ(self):
+        self.resetCamera()
+        self.camera.setOrientation()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_setOrientationAll(self):
+        self.resetCamera()
+        self.camera.setOrientation()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    # corner cases
+
+    def test_overlappingArguments(self):
+        self.resetCamera()
+        self.camera.setPosition(0, 0, 0)
+        self.camera.setLookAt(0, 0, 0)
+        self.camera.setOrientation(0, 0, 0)
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+'''
 class TestShaderProgram(unittest.TestCase):
 
     def test_shaderProgram(self):
