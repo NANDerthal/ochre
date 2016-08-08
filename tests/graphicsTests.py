@@ -148,21 +148,27 @@ class TestCamera(unittest.TestCase):
 
     def test_lookAtEqualsPosition(self):
         self.resetCamera()
-        self.camera.setPosition(0, 0, 0)
-        self.camera.setLookAt(0, 0, 0)
-        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+        self.camera.setPosition(0.5, 0.5, 0.5)
+        self.camera.setLookAt(0.5, 0.5, 0.5)
+        self.assertEqual(self.camera.getMatrix(), np.zeros(4,4))
 
     def test_lookAtEqualsUp(self):
         self.resetCamera()
-        self.camera.setLookAt(0, 0, 0)
-        self.camera.setUpVector(0, 0, 0)
-        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+        self.camera.setLookAt(0, 0, 1)
+        self.camera.setUpVector(0, 0, 1)
+        self.assertEqual(self.camera.getMatrix(), np.zeros(4,4))
 
     def test_positionEqualsUp(self):
         self.resetCamera()
-        self.camera.setPosition(0, 0, 0)
-        self.camera.setUpVector(0, 0, 0)
+        self.camera.setPosition(0.5, 0.5, 0.5)
+        self.camera.setUpVector(0.5, 0.5, 0.5)
+        checkMatrix()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_zeroUpVector(self):
+        self.resetCamera()
+        self.camera.setUpVector(0, 0, 0)
+        self.assertEqual(self.camera.getMatrix(), np.zeros(4,4))
 
     def test_nonNormalizedUpVector(self):
         self.resetCamera()
@@ -171,6 +177,11 @@ class TestCamera(unittest.TestCase):
         magnitude = sum([x**2 for x in expected])
         expected = [x * sqrt(magnitude) for x in expected]
         self.assertEqual(self.camera.getUpVector(), expected ))
+
+    def test_movePositionPastLookAt(self):
+        self.resetCamera()
+        self.setPosition(0, 0, 2)
+        self.checkMatrix()
 
 '''
 class TestShaderProgram(unittest.TestCase):
