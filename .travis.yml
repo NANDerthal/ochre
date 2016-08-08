@@ -61,7 +61,8 @@ addons:
 
 # Run all tests at once
 script:
-    coverage run --source=core,graphics,gui,input,physics,prototypes,sound tests/allTests.py
+    - make
+    - coverage run --source=core,graphics,gui,input,physics,prototypes,sound tests/allTests.py
 
 # ===== post-testing =====
 after_success:
