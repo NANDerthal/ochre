@@ -52,8 +52,8 @@ class TestCamera(unittest.TestCase):
         lookAt = np.array(self.camera.getLookAt())
         upVector = np.array(self.camera.getUpVector())
 
-        expected = self.generateMatrix(position, lookAt, upVector):
-        result = np.matrixCompare(self.camera.getMatrix(), expected))
+        expected = self.generateMatrix(position, lookAt, upVector)
+        result = np.matrixCompare(self.camera.getMatrix(), expected)
         self.assertTrue(result)
 
     def test_constructor(self):
@@ -176,7 +176,7 @@ class TestCamera(unittest.TestCase):
         expected = [42, 2, -93]
         magnitude = sum([x**2 for x in expected])
         expected = [x * sqrt(magnitude) for x in expected]
-        self.assertEqual(self.camera.getUpVector(), expected ))
+        self.assertEqual(self.camera.getUpVector(), expected)
 
     def test_movePositionPastLookAt(self):
         self.resetCamera()
