@@ -57,7 +57,7 @@ class TestCamera(unittest.TestCase):
         self.assertTrue(result)
 
     def test_constructor(self):
-        self.assert(self.camera)
+        self.assertNotEqual(self.camera, None)
         self.assertEqual(self.camera.getPosition(), [0, 0, 0])
         self.assertEqual(self.camera.getLookAt(), [0, 0, -1])
         self.assertEqual(self.camera.getUpVector(), [0, 1, 0])
