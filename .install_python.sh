@@ -1,4 +1,4 @@
-curl https://bootstrap.pypa.io/get-pip.py | sudo python
-sudo pip install cython
-sudo pip install -r requirements.txt
+curl https://bootstrap.pypa.io/get-pip.py | sudo -H python
+sudo -H pip install cython
+sudo -H pip install -r requirements.txt
 
