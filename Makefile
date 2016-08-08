@@ -1,5 +1,6 @@
-all:
-	
+all: 
+	python3 setup.py build_ext
+	python3 setup.py install --user
 
 # ===== TESTING ====
 
@@ -26,4 +27,11 @@ test-prototypes:
 
 test-sound:
 	python3 tests/soundTests.py
+
+# ===== CLEANUP =====
+
+clean:
+	rm -rf build
+	rm *.so
+	rm ochre.cpp
 
