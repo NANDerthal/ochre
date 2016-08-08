@@ -22,6 +22,7 @@ class TestCamera(unittest.TestCase):
     def resetCamera(self):
         self.camera.move(0, 0, 0)
         self.camera.lookAt(0, 0, 1)
+        self.camera.setUp(0, 1, 0)
 
     def test_constructor(self):
         self.assert(self.camera)
@@ -30,13 +31,51 @@ class TestCamera(unittest.TestCase):
         self.assertEqual(self.camera.getUp(), [0, 1, 0])
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_move(self):
+    # camera move
+
+    def test_moveNone(self):
         self.camera.move()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_lookAt(self):
+    def test_moveX(self):
+        self.camera.move()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_moveY(self):
+        self.camera.move()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_moveZ(self):
+        self.camera.move()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_moveAll(self):
+        self.camera.move()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    # camera lookAt
+
+    def test_lookAtNone(self):
         self.camera.lookAt()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_lookAtX(self):
+        self.camera.lookAt()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_lookAtY(self):
+        self.camera.lookAt()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_lookAtZ(self):
+        self.camera.lookAt()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_lookAtAll(self):
+        self.camera.lookAt()
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    # camera strafe
 
     def test_strafeNone(self):
         resetCamera()
