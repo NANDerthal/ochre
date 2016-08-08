@@ -2,6 +2,7 @@
 
 import unittest
 import numpy as np
+from math import sqrt
 
 from ochre import graphics
 
@@ -23,13 +24,13 @@ class TestCamera(unittest.TestCase):
     def resetCamera(self):
         self.camera.setPosition(0, 0, 0)
         self.camera.setLookAt(0, 0, 1)
-        self.camera.setOrientation(0, 1, 0)
+        self.camera.setUpVector(0, 1, 0)
 
     def test_constructor(self):
         self.assert(self.camera)
         self.assertEqual(self.camera.getPosition(), [0, 0, 0])
         self.assertEqual(self.camera.getLookAt(), [0, 0, 1])
-        self.assertEqual(self.camera.getOrientation(), [0, 1, 0])
+        self.assertEqual(self.camera.getUpVector(), [0, 1, 0])
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
     # camera set position
@@ -59,7 +60,7 @@ class TestCamera(unittest.TestCase):
         self.camera.setPosition()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    # camera setLookAt
+    # camera set lookAt
 
     def test_setLookAtNone(self):
         self.resetCamera()
@@ -86,41 +87,60 @@ class TestCamera(unittest.TestCase):
         self.camera.setLookAt()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    # camera set orientation
+    # camera set up vector
 
-    def test_setOrientationNone(self):
+    def test_setUpVectorNone(self):
         self.resetCamera()
-        self.camera.setOrientation()
+        self.camera.setUpVector()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_setOrientationX(self):
+    def test_setUpVectorX(self):
         self.resetCamera()
-        self.camera.setOrientation()
+        self.camera.setUpVector()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_setOrientationY(self):
+    def test_setUpVectorY(self):
         self.resetCamera()
-        self.camera.setOrientation()
+        self.camera.setUpVector()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_setOrientationZ(self):
+    def test_setUpVectorZ(self):
         self.resetCamera()
-        self.camera.setOrientation()
+        self.camera.setUpVector()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
-    def test_setOrientationAll(self):
+    def test_setUpVectorAll(self):
         self.resetCamera()
-        self.camera.setOrientation()
+        self.camera.setUpVector()
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
 
     # corner cases
 
-    def test_overlappingArguments(self):
+    def test_lookAtEqualsPosition(self):
         self.resetCamera()
         self.camera.setPosition(0, 0, 0)
         self.camera.setLookAt(0, 0, 0)
-        self.camera.setOrientation(0, 0, 0)
         self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_lookAtEqualsUp(self):
+        self.resetCamera()
+        self.camera.setLookAt(0, 0, 0)
+        self.camera.setUpVector(0, 0, 0)
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_positionEqualsUp(self):
+        self.resetCamera()
+        self.camera.setPosition(0, 0, 0)
+        self.camera.setUpVector(0, 0, 0)
+        self.assertEqual(self.camera.getMatrix(), np.identity(4))
+
+    def test_nonNormalizedUpVector(self):
+        self.resetCamera()
+        self.camera.setUpVector(42, 2, -93)
+        expected = [42, 2, -93]
+        magnitude = sum([x**2 for x in expected])
+        expected = [x * sqrt(magnitude) for x in expected]
+        self.assertEqual(self.camera.getUpVector(), expected ))
 
 '''
 class TestShaderProgram(unittest.TestCase):
