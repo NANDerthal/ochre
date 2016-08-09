@@ -1,14 +1,14 @@
 language: python
-#python:
-#    - "2.6"
-#    - "2.7"
-#    - "3.3"
-#    - "3.4"
-#    - "3.5"
-#    - "3.5-dev"
-#    - "3.6-dev"
-#    - pypy
-#    - pypy3
+python:
+    - "2.6"
+    - "2.7"
+    - "3.3"
+    - "3.4"
+    - "3.5"
+    - "3.5-dev"
+    - "3.6-dev"
+    - pypy
+    - pypy3
 
 # ===== general settings =====
 
@@ -24,27 +24,20 @@ os:
 #   - g++
 #   - clang
 
-env:
-    - PYTHON=python2.6
-    - PYTHON=python2.7
-    - PYTHON=python3.3
-    - PYTHON=python3.4
-    - PYTHON=python3.5
-    - PYTHON=python3.5-dev
-    - PYTHON=python3.6-dev
-    - PYTHON=pypy
-    - PYTHON=pypy3
-
 matrix:
     allow_failures:
-        - PYTHON=pypy
-        - PYTHON=pypy3
-        - PYTHON=python3.5-dev
-        - PYTHON=python3.6-dev
+        - python: pypy
+        - python: pypy3
+        - python: 3.5-dev
+        - python: 3.6-dev
         - os: osx
     include:
         - os: osx
           language: generic
+          PYTHON=python2
+        - os: osx
+          language: generic
+          PYTHON=python3
 
 # ===== install dependencies =====
 
