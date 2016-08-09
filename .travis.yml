@@ -64,6 +64,7 @@ addons:
         - libglew-dev
         - libsoil-dev
         - libglm-dev
+        - python3-venv
 
 # ===== run tests =====
 
