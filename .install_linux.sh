@@ -5,6 +5,7 @@ sudo apt-get --force-yes -y install libsdl2-dev
 sudo apt-get --force-yes -y install libsdl2-ttf-dev
 export PYTHON=$TRAVIS_PYTHON_VERSION
 # make new virtualenv
-pyvenv -p python$PYTHON --system-site-packages testvenv
-source testvenv/bin/activate
+virtualenv --system-site-packages ./testvenv
+ls
+source ./testvenv/bin/activate
 
