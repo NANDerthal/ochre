@@ -7,5 +7,6 @@ export PYTHON=$TRAVIS_PYTHON_VERSION
 # make new virtualenv
 virtualenv --system-site-packages ./testvenv
 ls
-source ./testvenv/bin/activate
+ls testvenv
+source ./testvenv/bin/python
 
