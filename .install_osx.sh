@@ -6,7 +6,7 @@ brew install glm
 git clone https://github.com/smibarber/libSOIL.git
 cd libSOIL; make; make install; cd ..;
 
-brew install python3
-virtualenv venv -p python3
+brew install $PYTHON
+virtualenv venv -p $PYTHON
 source venv/bin/activate
 

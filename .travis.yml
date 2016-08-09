@@ -1,15 +1,19 @@
 language: python
-python:
-    - "2.6"
-    - "2.7"
-    - "3.3"
-    - "3.4"
-    - "3.5"
-    - "3.5-dev"
-    - "3.6-dev"
-    - pypy
-    - pypy3
+#python:
+#    - "2.6"
+#    - "2.7"
+#    - "3.3"
+#    - "3.4"
+#    - "3.5"
+#    - "3.5-dev"
+#    - "3.6-dev"
+#    - pypy
+#    - pypy3
 
+# ===== general settings =====
+
+notifications:
+    email: false
 
 # ===== testing systems =====
 
@@ -20,12 +24,23 @@ os:
 #   - g++
 #   - clang
 
+env:
+    - PYTHON=python2.6
+    - PYTHON=python2.7
+    - PYTHON=python3.3
+    - PYTHON=python3.4
+    - PYTHON=python3.5
+    - PYTHON=python3.5-dev
+    - PYTHON=python3.6-dev
+    - PYTHON=pypy
+    - PYTHON=pypy3
+
 matrix:
     allow_failures:
-        - python: pypy
-        - python: pypy3
-        - python: 3.5-dev
-        - python: 3.6-dev
+        - PYTHON=pypy
+        - PYTHON=pypy3
+        - PYTHON=python3.5-dev
+        - PYTHON=python3.6-dev
         - os: osx
     include:
         - os: osx
@@ -41,11 +56,11 @@ before_install:
 install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo sh .install_linux.sh             ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo sh .install_osx.sh                 ; fi
-#    - sudo sh .install_python.sh
-    - if [[ "$TRAVIS_PYTHON_VERSION" == 2.* ]]; then sudo sh .install_python2.sh        ; fi
-    - if [[ "$TRAVIS_PYTHON_VERSION" == pypy ]]; then sudo sh .install_python2.sh       ; fi
-    - if [[ "$TRAVIS_PYTHON_VERSION" == 3.* ]]; then sudo sh .install_python3.sh        ; fi
-    - if [[ "$TRAVIS_PYTHON_VERSION" == pypy3 ]]; then sudo sh .install_python3.sh      ; fi
+    - sudo sh .install_python.sh
+#    - if [[ "$TRAVIS_PYTHON_VERSION" == 2.* ]]; then sudo sh .install_python2.sh        ; fi
+#    - if [[ "$TRAVIS_PYTHON_VERSION" == pypy ]]; then sudo sh .install_python2.sh       ; fi
+#    - if [[ "$TRAVIS_PYTHON_VERSION" == 3.* ]]; then sudo sh .install_python3.sh        ; fi
+#    - if [[ "$TRAVIS_PYTHON_VERSION" == pypy3 ]]; then sudo sh .install_python3.sh      ; fi
 
 # ubuntu
 addons:
@@ -56,8 +71,6 @@ addons:
         - libglew-dev
         - libsoil-dev
         - libglm-dev
-        - python-dev
-        - python3-dev
 
 # ===== run tests =====
 
