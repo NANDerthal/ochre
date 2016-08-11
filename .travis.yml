@@ -52,8 +52,8 @@ install:
     - python --version
     - curl https://bootstrap.pypa.io/get-pip.py | sudo -H python
     - pip --version
-    - sudo -H python -m pip install cython
-    - sudo -H python -m pip install -r requirements.txt
+    - sudo -H pip install cython
+    - sudo -H pip install -r requirements.txt
 #    - sudo sh .install_python.sh
 #    - if [[ "$TRAVIS_PYTHON_VERSION" == 2.* ]]; then sudo sh .install_python2.sh        ; fi
 #    - if [[ "$TRAVIS_PYTHON_VERSION" == pypy ]]; then sudo sh .install_python2.sh       ; fi
