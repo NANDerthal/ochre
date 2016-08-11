@@ -9,6 +9,6 @@ cd libSOIL; make; make install; cd ..;
 export PYTHON=$TRAVIS_PYTHON_VERSION
 
 brew install python$PYTHON
-virtualenv venv -p python
+virtualenv venv -p python$PYTHON
 source venv/bin/activate
 
