@@ -1,3 +1,4 @@
+echo $PYTHON
 python$PYTHON --version
 curl https://bootstrap.pypa.io/get-pip.py | sudo -H python$PYTHON
 pip --version

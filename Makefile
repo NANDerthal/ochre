@@ -1,4 +1,5 @@
 all: 
+	echo $(PYTHON)
 	python$(PYTHON) setup.py build_ext
 	python$(PYTHON) setup.py install --user
 
