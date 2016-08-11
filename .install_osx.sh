@@ -6,11 +6,7 @@ brew install glm
 git clone https://github.com/smibarber/libSOIL.git
 cd libSOIL; make; make install; cd ..;
 
-export PYTHON=$TRAVIS_PYTHON_VERSION
-
-brew install python$PYTHON
-virtualenv venv -p python$PYTHON
+brew install python$TRAVIS_PYTHON_VERSION
+virtualenv venv -p python$TRAVIS_PYTHON_VERSION
 source venv/bin/activate
-
-export PYTHON=$TRAVIS_PYTHON_VERSION
 

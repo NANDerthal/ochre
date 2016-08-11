@@ -3,9 +3,7 @@ deactivate
 # set up tools
 sudo apt-get --force-yes -y install libsdl2-dev
 sudo apt-get --force-yes -y install libsdl2-ttf-dev
-PYTHON=$TRAVIS_PYTHON_VERSION
-export PYTHON
-echo Python version: $PYTHON
+echo Python version: $TRAVIS_PYTHON_VERSION
 # make new virtualenv
 #virtualenv·-p·python$PYTHON ./venv
 #virtualenv --system-site-packages ./venv
