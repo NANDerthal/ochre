@@ -13,4 +13,5 @@ ls testvenv
 echo "ls testvenv/bin"
 ls testvenv/bin
 . ./testvenv/bin/activate
+export PYTHON=$TRAVIS_PYTHON_VERSION
 
