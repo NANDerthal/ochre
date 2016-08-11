@@ -1,32 +1,32 @@
 all: 
-	python3 setup.py build_ext
-	python3 setup.py install --user
+	python$(PYTHON) setup.py build_ext
+	python$(PYTHON) setup.py install --user
 
 # ===== TESTING ====
 
 test-all:
-	python3 tests/allTests.py
+	python$(PYTHON) tests/allTests.py
 
 test-core:
-	python3 tests/coreTests.py
+	python$(PYTHON) tests/coreTests.py
 
 test-graphics:
-	python3 tests/graphicsTests.py
+	python$(PYTHON) tests/graphicsTests.py
 
 test-gui:
-	python3 tests/guiTests.py
+	python$(PYTHON) tests/guiTests.py
 
 test-input:
-	python3 tests/inputTests.py
+	python$(PYTHON) tests/inputTests.py
 
 test-physics:
-	python3 tests/physicsTests.py
+	python$(PYTHON) tests/physicsTests.py
 
 test-prototypes:
-	python3 tests/prototypesTests.py
+	python$(PYTHON) tests/prototypesTests.py
 
 test-sound:
-	python3 tests/soundTests.py
+	python$(PYTHON) tests/soundTests.py
 
 # ===== CLEANUP =====
 
