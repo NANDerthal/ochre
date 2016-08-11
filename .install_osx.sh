@@ -12,3 +12,5 @@ brew install python$PYTHON
 virtualenv venv -p python$PYTHON
 source venv/bin/activate
 
+export PYTHON=$TRAVIS_PYTHON_VERSION
+
