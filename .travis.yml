@@ -1,6 +1,5 @@
 language: python
 python:
-    - "2.6"
     - "2.7"
     - "3.3"
     - "3.4"
@@ -56,11 +55,6 @@ install:
     - echo $CURRENT_PYTHON
     - sudo -H $CURRENT_PYTHON -m pip install cython
     - sudo -H $CURRENT_PYTHON -m pip install -r requirements.txt
-#    - sudo sh .install_python.sh
-#    - if [[ "$TRAVIS_PYTHON_VERSION" == 2.* ]]; then sudo sh .install_python2.sh        ; fi
-#    - if [[ "$TRAVIS_PYTHON_VERSION" == pypy ]]; then sudo sh .install_python2.sh       ; fi
-#    - if [[ "$TRAVIS_PYTHON_VERSION" == 3.* ]]; then sudo sh .install_python3.sh        ; fi
-#    - if [[ "$TRAVIS_PYTHON_VERSION" == pypy3 ]]; then sudo sh .install_python3.sh      ; fi
 
 # ubuntu
 addons:
