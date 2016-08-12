@@ -55,6 +55,9 @@ install:
     - echo $CURRENT_PYTHON
     - sudo -H $CURRENT_PYTHON -m pip install cython
     - sudo -H $CURRENT_PYTHON -m pip install -r requirements.txt
+    - export PYTHON=python$TRAVIS_PYTHON_VERSION
+    - if [[ "$TRAVIS_PYTHON_VERSION" == "pypy"]]; then export PYTHON=$TRAVIS_PYTHON_VERSION; fi
+    - if [[ "$TRAVIS_PYTHON_VERSION" == "pypy3"]]; then export PYTHON=$TRAVIS_PYTHON_VERSION; fi
 
 # ubuntu
 addons:
