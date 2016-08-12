@@ -1,6 +1,12 @@
-all: 
+all:
 	echo $(TRAVIS_PYTHON_VERSION)
+ifeq ($(TRAVIS_PYTHON_VERSION),"pypy")
+	$(TRAVIS_PYTHON_VERSION) setup.py build_ext
+else ifeq ($(TRAVIS_PYTHON_VERSION),"pypy3")
+	$(TRAVIS_PYTHON_VERSION) setup.py build_ext
+else
 	python$(TRAVIS_PYTHON_VERSION) setup.py build_ext
+endif
 	python$(TRAVIS_PYTHON_VERSION) setup.py install --user
 
 # ===== TESTING ====
