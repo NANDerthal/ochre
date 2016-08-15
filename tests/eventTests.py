@@ -4,7 +4,7 @@ import unittest
 
 import constants
 
-from ochre import input
+from ochre import events
 
 def runInputTests():
     return True

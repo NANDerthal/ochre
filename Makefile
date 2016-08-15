@@ -17,8 +17,8 @@ test-graphics:
 test-gui:
 	$(PYTHON) tests/guiTests.py
 
-test-input:
-	$(PYTHON) tests/inputTests.py
+test-event:
+	$(PYTHON) tests/eventTests.py
 
 test-physics:
 	$(PYTHON) tests/physicsTests.py
