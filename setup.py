@@ -6,7 +6,7 @@ ext = Extension(
     "ochre",
     ["ochre.pyx"],
     language="c++",
-    include_dirs = ["."],
+    include_dirs = [".", "./core", "./graphics", "./gui", "./input", "./physics", "./prototypes", "./sound", "./tests"],
     libraries = ["stdc++"],
     extra_link_args = ["-lSDL2", "-lSDL2_ttf", "-lGLEW", "-lGL", "-lSOIL"],
     cmdclass = {'build_ext': build_ext}
