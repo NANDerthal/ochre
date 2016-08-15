@@ -4,13 +4,15 @@ import unittest
 import numpy as np
 from math import sqrt
 
+import constants
+
 from ochre import graphics
 
 # test matrix equality within allowable tolerance
 # note: some error is expected due to the differences in OpenGL type precision
 def matrixCompare(m1, m2):
     result = np.absolute(np.subtract(m1, m2))
-    if(result.max > 0.00001):
+    if(result.max > constants.FLOAT_TOLERANCE):
         return False
     else:
         return True
